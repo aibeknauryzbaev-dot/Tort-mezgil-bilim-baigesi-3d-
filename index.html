@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Төрт мезгіл – білім бәйгесі</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#0d2b4a;font-family:"Arial Rounded MT Bold","Trebuchet MS","Segoe UI",Arial,sans-serif;color:#17345f}
+button,input{font:inherit}
+button:focus-visible,input:focus-visible{outline:6px solid #fff;outline-offset:3px}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden;--s1:#7fd4ff;--s2:#fff3c4;--h1:#9be58f;--h2:#4fb86a;background:linear-gradient(var(--s1),var(--s2) 75%)}
+.t1{--s1:#38b6ff;--s2:#c9f0ff;--h1:#ffe27a;--h2:#f5b82e}.t2{--s1:#ff9ad0;--s2:#fff0a8;--h1:#8ee0c0;--h2:#4cc2d9}.t3{--s1:#8fe3c0;--s2:#e6fbd2;--h1:#b7a6ff;--h2:#7f6bdb}.t4{--s1:#1d1050;--s2:#7a4bc7;--h1:#4b2a8a;--h2:#2a1560}
+#sun{position:absolute;right:130px;top:50px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fffbd0,#ffd23f 60%,#ffab1a);box-shadow:0 0 90px 40px #ffe58a99;animation:glow 12s infinite}
+.t4 #sun{background:radial-gradient(circle at 35% 35%,#fff,#d8d8ff);box-shadow:0 0 90px 30px #cbbcff88}
+@keyframes glow{50%{transform:scale(1.08)}}
+.cl{position:absolute;width:260px;height:70px;border-radius:70px;background:#fff;opacity:.85;box-shadow:70px -30px 0 10px #fff,130px 0 0 0 #fff;animation:drift 140s linear infinite}
+@keyframes drift{from{left:-500px}to{left:2000px}}
+.hill{position:absolute;bottom:-300px;width:1500px;height:640px;border-radius:50%;background:radial-gradient(circle at 40% 22%,var(--h1),var(--h2))}
+#fx,#deco{position:absolute;inset:0;pointer-events:none}
+.scr{position:absolute;inset:0;opacity:0;pointer-events:none;transform:scale(1.04);transition:opacity .5s,transform .5s}
+.scr.on{opacity:1;pointer-events:auto;transform:none}
+.b3{border:0;border-radius:28px;font-weight:900;cursor:pointer;color:#6a3d00;background:linear-gradient(#ffe37a,#ffb92e);box-shadow:inset 0 6px 0 #fff9,inset 0 -7px 0 #0002,0 12px 0 #c97d00,0 22px 26px #0005;transition:transform .12s,box-shadow .12s,opacity .3s;padding:0 56px;height:104px;font-size:42px}
+.b3:hover{transform:translateY(-4px) scale(1.04)}.b3:active{transform:translateY(9px);box-shadow:inset 0 6px 0 #fff9,0 3px 0 #c97d00,0 8px 12px #0005}
+.b3.bl{color:#fff;background:linear-gradient(#8fdcff,#2f93e0);box-shadow:inset 0 6px 0 #fff8,inset 0 -7px 0 #0002,0 12px 0 #1a6aa8,0 22px 26px #0005}
+.b3:disabled{opacity:.5;cursor:default}
+.hidden{display:none!important}
+/* intro */
+#ttl{position:absolute;left:0;right:0;top:150px;text-align:center;font-weight:900;color:#ffd23f;line-height:1.02;-webkit-text-stroke:10px #8a4300;paint-order:stroke fill;text-shadow:0 2px #d38b00,0 4px #d38b00,0 6px #c27300,0 8px #c27300,0 10px #b36600,0 12px #b36600,0 14px #a35a00,0 16px #a35a00,0 40px 50px #0006;animation:bobt 12s ease-in-out infinite}
+#ttl small{display:block;font-size:104px}#ttl span{display:block;font-size:150px}
+@keyframes bobt{50%{transform:translateY(-6px)}}
+#sub{position:absolute;top:520px;left:0;right:0;text-align:center;font-size:44px;color:#fff;text-shadow:0 4px 0 #1a6aa8,0 8px 14px #0005;font-weight:900}
+#startBtn{position:absolute;left:50%;top:640px;transform:translateX(-50%);height:150px;font-size:66px;padding:0 90px;animation:pulse 5s infinite}
+@keyframes pulse{50%{box-shadow:inset 0 6px 0 #fff9,inset 0 -7px 0 #0002,0 12px 0 #c97d00,0 0 70px 24px #fff8}}
+.cn{position:absolute;width:300px;text-align:center}
+.cn .av{width:290px;height:320px}
+.cn input{width:260px;text-align:center;font-size:32px;font-weight:900;color:var(--c);border:5px solid var(--c);border-radius:22px;padding:8px;background:#fffd;box-shadow:0 6px 0 #0003}
+.av{animation:bob 9s ease-in-out infinite;filter:drop-shadow(0 12px 8px #0004)}
+@keyframes bob{50%{transform:translateY(-5px)}}
+/* game */
+#top{position:absolute;left:40px;top:20px;width:1700px;height:100px;display:flex;gap:18px;align-items:center}
+.pill{background:#fffe;border:5px solid #fff;border-radius:30px;padding:8px 22px;font-size:28px;font-weight:900;box-shadow:0 6px 0 #0003}
+.chip{flex:1;display:flex;align-items:center;gap:10px;background:#fffe;border:5px solid var(--c);border-radius:30px;padding:6px 14px;font-size:28px;font-weight:900;color:var(--c);box-shadow:0 6px 0 #0003;white-space:nowrap}
+.chip b,.ts b{display:inline-block;font-size:46px}
+.pop{animation:pop .5s}@keyframes pop{40%{transform:scale(1.7);color:#2fb872}}
+#tools{position:absolute;right:30px;top:24px;display:flex;gap:14px;z-index:50}
+#tools button{width:84px;height:84px;font-size:40px;padding:0;border-radius:26px;height:84px}
+#qp{position:absolute;left:160px;top:150px;width:1600px;height:170px;border-radius:46px;background:linear-gradient(#fff,#eaf5ff);border:8px solid #ffc83d;box-shadow:0 12px 0 #c97d00,0 26px 30px #0005;text-align:center;padding-top:34px}
+#sn{position:absolute;left:50%;top:-34px;transform:translateX(-50%);background:linear-gradient(#ffe37a,#ffb92e);color:#6a3d00;border-radius:24px;padding:6px 40px;font-size:30px;font-weight:900;box-shadow:0 6px 0 #c97d00;white-space:nowrap}
+#qt{font-size:54px;font-weight:900;line-height:1.15;padding:0 40px}
+#hint{font-size:26px;color:#42658b;font-weight:700;margin-top:6px}
+#pg{position:absolute;left:40px;right:40px;bottom:12px;height:10px;border-radius:9px;background:#dce9f6;overflow:hidden}#pb{height:100%;background:linear-gradient(90deg,#43c9a3,#48a9ff,#a78bfa);transition:width .5s}
+#teams{position:absolute;left:55px;top:365px;display:flex;gap:30px}
+.card{--c:#39b978;width:430px;border-radius:38px;padding:16px;background:linear-gradient(#fff,#eef7ff);border:7px solid var(--c);box-shadow:0 12px 0 color-mix(in srgb,var(--c),#000 28%),0 26px 34px #0005;position:relative}
+.ch0{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:relative}
+.ch0 .av{width:116px;height:128px;flex:none}
+.tn{font-size:38px;font-weight:900;color:var(--c)}.ts{font-size:26px;font-weight:800;color:#42658b}.ts b{color:var(--c)}
+.bd{position:absolute;right:0;top:4px;font-size:34px;font-weight:900;border-radius:20px;padding:4px 14px}.bd.g{background:#35b875;color:#fff;animation:pop .6s}.bd.r{background:#f16d77;color:#fff}
+.ch{display:flex;align-items:center;gap:12px;width:100%;height:68px;margin-top:10px;padding:0 14px;border-radius:22px;border:0;background:linear-gradient(#fff,#e1f0ff);color:#24466c;font-size:26px;font-weight:800;text-align:left;cursor:pointer;box-shadow:0 7px 0 #a9c9e6,inset 0 3px 0 #fff;transition:transform .15s,box-shadow .15s;line-height:1.05}
+.ch:hover:not(:disabled){transform:translateY(-3px)}
+.ch i{flex:none;width:42px;height:42px;border-radius:50%;background:var(--c);color:#fff;font-style:normal;display:grid;place-items:center;font-size:26px;box-shadow:inset 0 -4px 0 #0003}
+.ch.sel{background:linear-gradient(color-mix(in srgb,var(--c),#fff 22%),var(--c));color:#fff;transform:scale(1.07);box-shadow:0 0 0 5px #fff,0 0 26px 6px var(--c),0 7px 0 #0003;animation:sp .35s}
+.ch.sel i{background:#fff;color:var(--c)}
+@keyframes sp{50%{transform:scale(1.14)}}
+.ch.ok{background:linear-gradient(#5be39b,#26b36a)!important;color:#fff!important;box-shadow:0 0 0 5px #fff,0 0 34px 10px #3ef08a!important;transform:scale(1.04)}
+.ch.no{background:linear-gradient(#ff9aa2,#e8505e)!important;color:#fff!important;opacity:.9}
+.ch:disabled{cursor:default}
+.card.cheer .av{animation:jump .9s 2}@keyframes jump{40%{transform:translateY(-34px) rotate(-6deg) scale(1.08)}70%{transform:translateY(0) rotate(5deg)}}
+#fb{position:absolute;left:160px;width:1600px;top:880px;text-align:center;font-size:34px;font-weight:900;color:#fff;text-shadow:0 3px 0 #1a4a7a,0 6px 12px #0005;min-height:46px}
+#bar{position:absolute;left:0;right:0;top:935px;display:flex;justify-content:center}
+.st{position:absolute;font-size:46px;pointer-events:none;animation:fly 1.8s ease-out forwards;z-index:30}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) rotate(360deg) scale(.4);opacity:0}}
+/* decor */
+.sl{position:absolute;height:6px;border-radius:6px;background:linear-gradient(90deg,#fff0,#fffc);animation:zip 4.5s linear infinite}
+@keyframes zip{from{left:-600px}to{left:2000px}}
+.fl{position:absolute;font-size:90px;animation:bob 8s ease-in-out infinite}
+.wc{position:absolute;background:#fffd;border:4px solid #fff;border-radius:18px;padding:6px 20px;font-size:30px;font-weight:900;color:#5a48c8;box-shadow:0 8px 0 #0002;animation:bob 7s ease-in-out infinite}
+.sr{position:absolute;color:#fff;animation:tw 4.5s infinite}@keyframes tw{50%{opacity:.2;transform:scale(.6)}}
+/* banner */
+#bn{position:absolute;inset:0;z-index:40;background:#0b1f3acc;display:grid;place-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .4s}
+#bn.on{opacity:1;pointer-events:auto}
+#bn div{color:#ffd23f;font-weight:900;-webkit-text-stroke:8px #8a4300;paint-order:stroke fill;text-shadow:0 10px 0 #a35a00,0 30px 40px #0008}
+#bn.on div{animation:zoom .7s cubic-bezier(.2,1.6,.4,1)}@keyframes zoom{from{transform:scale(.2) rotate(-12deg);opacity:0}}
+#bn .a{font-size:130px}#bn .b{font-size:96px;margin-top:20px}#bn .c{font-size:54px;margin-top:30px;color:#fff;-webkit-text-stroke:0;text-shadow:0 4px 0 #1a6aa8}
+/* final */
+#rays{position:absolute;left:660px;top:30px;width:600px;height:600px;border-radius:50%;background:repeating-conic-gradient(#fff9 0 8deg,#fff0 8deg 16deg);-webkit-mask:radial-gradient(circle,#000 20%,#0000 70%);mask:radial-gradient(circle,#000 20%,#0000 70%);animation:spin 45s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#tro{position:absolute;left:730px;top:60px;width:460px;height:520px;animation:bobt 6s ease-in-out infinite;filter:drop-shadow(0 20px 20px #0006)}
+.wv{position:absolute;top:210px;display:flex;gap:10px}.wv .av{width:300px;height:330px;animation:jump 1.6s infinite}
+#fh{position:absolute;left:0;right:0;top:590px;text-align:center;font-size:104px;font-weight:900;color:#ffd23f;-webkit-text-stroke:9px #8a4300;paint-order:stroke fill;text-shadow:0 8px 0 #a35a00,0 12px 0 #8a4300,0 30px 40px #0006}
+#fw{position:absolute;left:100px;right:100px;top:725px;text-align:center;font-size:54px;font-weight:900;color:#fff;text-shadow:0 5px 0 #1a4a7a,0 10px 16px #0007}
+#fs{position:absolute;left:260px;top:820px;display:flex;gap:20px;width:1400px}
+#fbtn{position:absolute;left:0;right:0;top:925px;display:flex;justify-content:center;gap:40px}
+.cf{position:absolute;top:-30px;width:16px;height:26px;z-index:45;animation:fall 7s linear forwards}
+@keyframes fall{to{transform:translateY(1150px) rotate(900deg)}}
+@media print{#stage{position:static;transform:none!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<radialGradient id="gs" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ffe9d2"/><stop offset="1" stop-color="#f0b685"/></radialGradient>
+<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3a0"/><stop offset=".45" stop-color="#ffd23f"/><stop offset="1" stop-color="#d78a00"/></linearGradient></defs></svg>
+<div id="stage" class="t0">
+<div id="sun"></div><div class="cl" style="top:90px;animation-delay:-10s"></div><div class="cl" style="top:260px;transform:scale(.7);animation-delay:-40s"></div>
+<div class="hill" style="left:-380px"></div><div class="hill" style="right:-380px"></div>
+<div id="deco"></div><canvas id="fx" width="1920" height="1080"></canvas>
+
+<section class="scr on" id="intro">
+<div id="ttl"><span>ТӨРТ МЕЗГІЛ</span><small>– БІЛІМ БӘЙГЕСІ</small></div>
+<div id="sub">Төрт топ • Төрт кезең • Бір жеңімпаз!</div>
+<button class="b3" id="startBtn">🚀 ОЙЫНДЫ БАСТАУ</button>
+<div id="corners"></div>
+</section>
+
+<section class="scr" id="game">
+<div id="top"><div><div class="pill" id="rp"></div></div><div class="pill" id="qpill"></div><div id="sc" style="display:flex;gap:14px;flex:1"></div></div>
+<div id="qp"><div id="sn"></div><div id="qt"></div><div id="hint"></div><div id="pg"><div id="pb"></div></div></div>
+<div id="teams"></div>
+<div id="fb" aria-live="polite"></div>
+<div id="bar"><button class="b3" id="checkBtn">✅ Жауаптарды тексеру</button><button class="b3 bl hidden" id="nextBtn">Келесі сұрақ ➜</button></div>
+</section>
+
+<section class="scr" id="final">
+<div id="rays"></div><div id="wvL" class="wv" style="left:120px"></div><div id="wvR" class="wv" style="right:120px"></div>
+<svg id="tro" viewBox="0 0 200 240"><path d="M50 20h100v60q0 50-50 60q-50-10-50-60z" fill="url(#gg)"/><path d="M50 36H20q0 50 40 56M150 36h30q0 50-40 56" stroke="#e5a100" stroke-width="12" fill="none" stroke-linecap="round"/><rect x="86" y="138" width="28" height="42" fill="url(#gg)"/><path d="M58 178h84l12 30H46z" fill="url(#gg)"/><rect x="36" y="206" width="128" height="24" rx="9" fill="#a45f00"/><path d="M68 34q-6 40 12 66" stroke="#fff" stroke-opacity=".65" stroke-width="9" fill="none" stroke-linecap="round"/><text x="100" y="94" text-anchor="middle" font-size="50">⭐</text></svg>
+<div id="fh">ҚҰТТЫҚТАЙМЫЗ!</div><div id="fw"></div><div id="fs"></div>
+<div id="fbtn"><button class="b3" id="restartBtn" style="height:96px;font-size:38px">🔄 Қайта ойнау</button><button class="b3 bl" id="prBtn" style="height:96px;font-size:38px">🖨️ Нәтижені басып шығару</button></div>
+</section>
+
+<div id="bn"><div><div class="a" id="bA"></div><div class="b" id="bB"></div><div class="c" id="bC"></div></div></div>
+<div id="tools"><button class="b3 bl" id="snBtn" title="Дыбыс">🔊</button><button class="b3 bl" id="fsBtn" title="Толық экран">⛶</button></div>
+</div>
+<script>
+const $=id=>document.getElementById(id),st=$("stage");
+const T=[{n:"Көктем",e:"🌸",c:"#39b978",s:0},{n:"Жаз",e:"☀️",c:"#f3ad28",s:0},{n:"Күз",e:"🍂",c:"#ef8050",s:0},{n:"Қыс",e:"❄️",c:"#399de2",s:0}];
+const DN=["Көктем","Жаз","Күз","Қыс"];
+const R=[
+{n:"«Жылдам жауап»",p:1,h:"Сұраққа дұрыс жауапты таңдаңдар.",q:[
+{q:"Көктемде қандай төлдер дүниеге келеді?",a:["Құлын, қозы, бұзау","Балапан, қаз","Аюдың қонжығы","Балық шабақтары"],c:0},
+{q:"Жаз мезгілінде егінге не болады?",a:["Қар басады","Піседі","Мұз қатады","Жапырақ түседі"],c:1},
+{q:"Күзде ағаш жапырақтары не істейді?",a:["Гүлдейді","Жасылданады","Сарғаяды","Бүршік жарады"],c:2},
+{q:"Қыстың алғашқы белгілерінің бірі қандай?",a:["Күн қатты ысиды","Гүлдер ашылады","Құстар ұя салады","Сулар қатып қалады"],c:3}]},
+{n:"«Суретті сөйлет»",p:2,h:"Сипаттамаға сәйкес жыл мезгілін таңдаңдар.",q:[
+{q:"Ағаштар бүршік жарып, жер көгереді. Бұл қай мезгіл?",a:DN,c:0},
+{q:"Күн ұзарып, жеміс-жидек піседі. Бұл қай мезгіл?",a:DN,c:1},
+{q:"Жапырақтар сарғайып, егін жиналады. Бұл қай мезгіл?",a:DN,c:2},
+{q:"Қар жауып, аяз болады. Бұл қай мезгіл?",a:DN,c:3}]},
+{n:"«Етістікті тап»",p:2,h:"Өлеңдегі етістікке сәйкес мезгілді таңдаңдар.",q:[
+{q:"«Жер көгереді, төлдер туады» – қай мезгіл?",a:DN,c:0},
+{q:"«Егін піседі, қауыздары толады» – қай мезгіл?",a:DN,c:1},
+{q:"«Жапырақ сарғаяды, ағаштан түседі» – қай мезгіл?",a:DN,c:2},
+{q:"«Қар жауады, сулар қатып қалады» – қай мезгіл?",a:DN,c:3}]},
+{n:"«Ойлан, тап!»",p:3,h:"Жұмбақтың шешуін табыңдар.",q:[
+{q:"Ақ көрпесін жамылды, дала аппақ боялды. Бұл қай мезгіл?",a:DN,c:3},
+{q:"Қар еріп, жылғалардан су ақты, гүлдер оянды. Бұл қай мезгіл?",a:DN,c:0},
+{q:"Күн күлімдеп қыздырды, жеміс-жидек пісірді. Бұл қай мезгіл?",a:DN,c:1},
+{q:"Сары кілем төселді, ағаштар жапырағын түсірді. Бұл қай мезгіл?",a:DN,c:2}]}];
+let ri=0,qi=0,locked=true,picks=[],winners=[];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* cartoon characters */
+function av(i){const c=T[i].c,h=["#7a4a2b","#2f2118","#9a4f22","#e0b04a"][i];
+const hat=[`<path d="M48 72Q100 22 152 72" stroke="#ff9ec4" stroke-width="8" fill="none"/><circle cx="62" cy="52" r="10" fill="#ff7eb3"/><circle cx="62" cy="52" r="4" fill="#ffe27a"/><circle cx="82" cy="40" r="8" fill="#fff"/><circle cx="82" cy="40" r="3" fill="#ffe27a"/>`,
+`<ellipse cx="100" cy="64" rx="84" ry="17" fill="#ffd76a"/><path d="M52 64Q54 14 100 14T148 64Z" fill="#ffc83d"/><rect x="53" y="50" width="94" height="9" fill="#ef6a4a"/>`,
+`<ellipse cx="92" cy="54" rx="58" ry="24" fill="#d9622b"/><ellipse cx="86" cy="46" rx="40" ry="12" fill="#ee8a47"/><rect x="88" y="24" width="8" height="12" rx="3" fill="#8a3d14"/>`,
+`<path d="M44 70Q46 10 100 10T156 70Z" fill="#2f93e0"/><rect x="40" y="62" width="120" height="20" rx="10" fill="#fff"/><circle cx="100" cy="8" r="14" fill="#fff"/>`][i];
+const hold=[`<path d="M172 218V168" stroke="#2f9a54" stroke-width="6"/><g fill="#ff7eb3"><circle cx="172" cy="152" r="11"/><circle cx="186" cy="164" r="11"/><circle cx="158" cy="164" r="11"/><circle cx="164" cy="144" r="11"/><circle cx="182" cy="146" r="11"/></g><circle cx="172" cy="156" r="8" fill="#ffe27a"/>`,
+`<circle cx="100" cy="190" r="17" fill="#ffd23f"/><g stroke="#ffd23f" stroke-width="5" stroke-linecap="round"><path d="M100 160v-6M100 220v6M70 190h-6M130 190h6M79 169l-4-4M121 169l4-4"/></g>`,
+`<path d="M168 150q22 14 6 42q-24-8-6-42z" fill="#ffc83d" stroke="#d9822b" stroke-width="3"/><path d="M170 154q4 18 4 36" stroke="#d9822b" stroke-width="3" fill="none"/>`,
+`<rect x="64" y="148" width="72" height="18" rx="9" fill="#e8494f"/><text x="172" y="190" text-anchor="middle" font-size="40" fill="#fff" stroke="#6bb8f0" stroke-width="2">✻</text>`][i];
+const e=(x)=>`<ellipse cx="${x}" cy="108" rx="13" ry="15" fill="#fff"/><circle cx="${x}" cy="110" r="9" fill="#2a1a12"/><circle cx="${x+3}" cy="105" r="3.5" fill="#fff"/>`;
+return `<svg class="av" viewBox="0 0 200 224"><circle cx="100" cy="98" r="62" fill="${h}"/><path d="M26 224Q30 156 100 152T174 224Z" fill="${c}"/><path d="M40 224Q46 172 78 164" stroke="#fff6" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="46" cy="108" r="11" fill="#f0b685"/><circle cx="154" cy="108" r="11" fill="#f0b685"/><circle cx="100" cy="104" r="55" fill="url(#gs)"/><path d="M46 96Q58 42 104 46T154 96Q132 68 100 74T46 96Z" fill="${h}"/>${e(78)}${e(122)}<path d="M64 88q14-9 26-2M110 86q14-7 26 2" stroke="#4a2c1a" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="62" cy="130" r="9" fill="#ff8f9c" opacity=".65"/><circle cx="138" cy="130" r="9" fill="#ff8f9c" opacity=".65"/><path d="M82 130Q100 152 118 130Z" fill="#a8323e"/><ellipse cx="100" cy="141" rx="9" ry="4" fill="#ff7e8a"/>${hat}${hold}</svg>`}
+/* sound */
+let AC,mute=false;
+function tn(f,d=.15,t="sine",at=0,v=.14){if(mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+at;o.type=t;o.frequency.setValueAtTime(f,s);g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const snd={click:()=>tn(660,.08,"triangle"),sel:()=>tn(520,.1,"triangle"),
+win:()=>[523,659,784,1047,1319].forEach((f,i)=>tn(f,.28,"triangle",i*.1)),
+bad:()=>{tn(220,.25,"sawtooth",0,.07);tn(165,.32,"sawtooth",.15,.07)},
+stage:()=>[392,523,659,784,1047,1319].forEach((f,i)=>tn(f,.35,"sine",i*.1)),
+fan:()=>{[[523,.2],[523,.2],[523,.2],[659,.4],[587,.2],[784,.2],[1047,.8]].reduce((t,[f,d])=>{tn(f,d+.1,"triangle",t,.16);tn(f/2,d+.1,"square",t,.05);return t+d},0)}};
+/* particles */
+const cx=$("fx").getContext("2d");let P=[];
+function seed(a){P=Array.from({length:22},(_,i)=>({x:Math.random()*1920,y:Math.random()*1080,s:22+Math.random()*20,v:8+Math.random()*14,d:Math.random()*6.28,e:a[i%a.length]}))}
+let lt=0;(function loop(t){const dt=Math.min(.05,((t||0)-lt)/1000||0);lt=t||0;cx.clearRect(0,0,1920,1080);cx.globalAlpha=.5;P.forEach(p=>{p.y+=p.v*dt;p.d+=.4*dt;p.x+=Math.sin(p.d)*12*dt;if(p.y>1100){p.y=-40;p.x=Math.random()*1920}cx.font=p.s+"px serif";cx.fillText(p.e,p.x,p.y)});requestAnimationFrame(loop)})();
+const SETS=[["🌸","☀️","🍂","❄️"],["✨","⭐","💨"],["🎨","🌈","🖼️","🌸"],["📝","✨","🍃"],["⭐","✨","🌟","🔮"]];
+function deco(n){let h="";const r=Math.random;
+if(n==1)for(let i=0;i<14;i++)h+=`<div class="sl" style="top:${r()*1000}px;width:${200+r()*400}px;animation-delay:-${r()*3}s"></div>`;
+if(n==2)["🖼️","🎨","🌈","🧩","🎈"].forEach((e,i)=>h+=`<div class="fl" style="left:${60+i*380}px;top:${i%2?860:300}px;animation-delay:-${i}s">${e}</div>`);
+if(n==3)["өседі","жауады","піседі","сарғаяды","қатады","ериді","гүлдейді","жайнайды"].forEach((w,i)=>h+=`<div class="wc" style="left:${40+i*230}px;top:${i%2?870:820}px;animation-delay:-${i*.6}s">${w}</div>`);
+if(n==4){for(let i=0;i<40;i++)h+=`<div class="sr" style="left:${r()*1900}px;top:${r()*1000}px;font-size:${14+r()*26}px;animation-delay:-${r()*2}s">★</div>`;h+=`<div class="fl" style="left:1620px;top:20px;font-size:100px">🎁</div>`}
+$("deco").innerHTML=h}
+/* scores */
+function setScore(i,a,b){const els=document.querySelectorAll(`[data-s="${i}"]`),t0=performance.now();els.forEach(e=>e.classList.add("pop"));
+(function f(t){const k=Math.min(1,(t-t0)/1200);els.forEach(e=>e.textContent=Math.round(a+(b-a)*k));if(k<1)requestAnimationFrame(f);else els.forEach(e=>e.classList.remove("pop"))})(t0)}
+function chips(){$("sc").innerHTML=T.map((t,i)=>`<div class="chip" style="--c:${t.c}"><span>${t.e}</span><span>${esc(t.n)}</span><b data-s="${i}">${t.s}</b></div>`).join("")}
+function show(id){["intro","game","final"].forEach(s=>$(s).classList.toggle("on",s==id))}
+function theme(n){st.className="t"+n;seed(SETS[n]);deco(n)}
+/* intro */
+const pos=[["left:50px;top:60px"],["right:50px;top:60px"],["left:50px;top:610px"],["right:50px;top:610px"]];
+function intro(){theme(0);show("intro");$("corners").innerHTML=T.map((t,i)=>`<div class="cn" style="--c:${t.c};${pos[i]}">${av(i)}<input data-i="${i}" aria-label="Топ атауы" value="${esc(t.n)}"></div>`).join("");
+document.querySelectorAll(".cn input").forEach(x=>x.addEventListener("input",e=>{T[+e.target.dataset.i].n=e.target.value.trim()||DN[+e.target.dataset.i]}))}
+/* round flow */
+function round(){theme(ri+1);const r=R[ri];render();locked=true;
+$("bA").textContent=`${ri+1}-КЕЗЕҢ`;$("bB").textContent=r.n;$("bC").textContent=`⭐ Дұрыс жауапқа ${r.p} ұпай`;$("bn").classList.add("on");snd.stage();
+setTimeout(()=>{$("bn").classList.remove("on");locked=false},2400)}
+function render(){picks=[null,null,null,null];locked=false;const r=R[ri],q=r.q[qi];
+$("sn").textContent=`${ri+1}-кезең. ${r.n}`;$("qt").textContent=q.q;$("hint").textContent=`${r.h}  ⭐ ${r.p} ұпай`;$("pb").style.width=((ri*4+qi)/16*100)+"%";
+$("rp").textContent=`🏁 ${ri+1}-кезең`;$("qpill").textContent=`Сұрақ: ${qi+1} / 4`;$("fb").textContent="";
+$("checkBtn").classList.remove("hidden");$("nextBtn").classList.add("hidden");
+$("teams").innerHTML=T.map((t,ti)=>`<div class="card" style="--c:${t.c}"><div class="ch0">${av(ti)}<div><div class="tn">${esc(t.n)}</div><div class="ts"><b data-s="${ti}">${t.s}</b> ұпай</div></div><span class="bd"></span></div>${q.a.map((a,ai)=>`<button class="ch" data-t="${ti}" data-a="${ai}"><i>${"ABCD"[ai]}</i>${esc(a)}</button>`).join("")}</div>`).join("");
+document.querySelectorAll("#sc [data-s]").forEach((e,i)=>e.textContent=T[i].s)}
+$("teams").addEventListener("click",e=>{const b=e.target.closest(".ch");if(!b||locked||b.disabled)return;const ti=+b.dataset.t;picks[ti]=+b.dataset.a;
+b.parentElement.querySelectorAll(".ch").forEach(z=>z.classList.remove("sel"));b.classList.add("sel");snd.sel()});
+function burst(card){const sr=st.getBoundingClientRect(),k=sr.width/1920,r=card.getBoundingClientRect(),x=(r.left+r.width/2-sr.left)/k,y=(r.top-sr.top)/k+70;
+for(let i=0;i<14;i++){const s=document.createElement("div");s.className="st";s.textContent=i%3?"⭐":"✨";s.style.cssText=`left:${x}px;top:${y}px;--dx:${(Math.random()-.5)*420}px;--dy:${-80-Math.random()*260}px`;st.appendChild(s);setTimeout(()=>s.remove(),1900)}}
+function check(){if(locked)return;
+if(picks.includes(null)){$("fb").textContent="⚠️ Барлық 4 топ жауапты таңдасын!";snd.bad();return}
+locked=true;const r=R[ri],q=r.q[qi],got=[];let bad=0;
+T.forEach((t,i)=>{const card=$("teams").children[i],bd=card.querySelector(".bd");
+card.querySelectorAll(".ch").forEach((b,j)=>{b.disabled=true;b.classList.remove("sel");if(j===q.c)b.classList.add("ok");else if(j===picks[i])b.classList.add("no")});
+if(picks[i]===q.c){const o=t.s;t.s+=r.p;setScore(i,o,t.s);got.push(t.n);bd.textContent="✔ +"+r.p;bd.className="bd g";card.classList.add("cheer");burst(card)}
+else{bad++;bd.textContent="✖";bd.className="bd r"}});
+$("fb").textContent=(got.length?`🎉 Дұрыс жауап: ${q.a[q.c]}. Ұпай алғандар: ${got.join(", ")}.`:`Дұрыс жауап: ${q.a[q.c]}.`)+(bad?" Ештеңе етпейді, келесі сұрақта міндетті түрде табасыңдар! 💪":"");
+got.length?snd.win():snd.bad();
+$("checkBtn").classList.add("hidden");$("nextBtn").classList.remove("hidden");$("nextBtn").textContent=qi===3&&ri===3?"🏆 Нәтижені көру":"Келесі сұрақ ➜"}
+function next(){snd.click();if(qi<3){qi++;render()}else if(ri<3){ri++;qi=0;round()}else final()}
+function confetti(){const cs=["#ff6b8a","#ffd34e","#57c9a5","#58aaf5","#a78bfa"];for(let i=0;i<110;i++){const e=document.createElement("i");e.className="cf";e.style.cssText=`left:${Math.random()*1920}px;background:${cs[i%5]};animation-delay:${Math.random()*2}s;border-radius:${i%2?"50%":"3px"}`;st.appendChild(e);setTimeout(()=>e.remove(),10000)}}
+function final(){theme(0);seed(["⭐","✨","🎉","🌟"]);show("final");const m=Math.max(...T.map(t=>t.s));winners=T.map((t,i)=>i).filter(i=>T[i].s===m);
+const nm=winners.map(i=>T[i].n.toUpperCase());
+$("fw").textContent=winners.length>1?`ТЕҢ НӘТИЖЕ! ЖЕҢІМПАЗДАР – ${nm.join(" ЖӘНЕ ")} ТОБЫ!`:`БҮГІНГІ БІЛІМ БӘЙГЕСІНІҢ ЖЕҢІМПАЗЫ – ${nm[0]} ТОБЫ!`;
+const w=winners.length==1?[winners[0],winners[0]]:winners,h=Math.ceil(w.length/2);
+$("wvL").innerHTML=w.slice(0,h).map(av).join("");$("wvR").innerHTML=w.slice(h).map(av).join("");
+$("wvR").querySelectorAll(".av").forEach(a=>a.style.transform="scaleX(-1)");
+$("fs").innerHTML=T.map(t=>`<div class="chip" style="--c:${t.c};justify-content:center;font-size:30px"><span>${t.e}</span><span>${esc(t.n)}</span><b>${t.s}</b></div>`).join("");
+$("rp").textContent="🏆 Қорытынды";snd.fan();confetti();setTimeout(confetti,2500);setTimeout(confetti,5000)}
+function start(){snd.click();T.forEach(t=>t.s=0);ri=0;qi=0;chips();show("game");round()}
+$("startBtn").addEventListener("click",start);$("checkBtn").addEventListener("click",check);$("nextBtn").addEventListener("click",next);
+$("restartBtn").addEventListener("click",()=>{snd.click();T.forEach(t=>t.s=0);intro()});
+$("prBtn").addEventListener("click",()=>window.print());
+$("snBtn").addEventListener("click",e=>{mute=!mute;e.currentTarget.textContent=mute?"🔇":"🔊";snd.click()});
+$("fsBtn").addEventListener("click",()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen());
+function fit(){st.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1080)})`}
+addEventListener("resize",fit);fit();intro();
+</script></body></html>
