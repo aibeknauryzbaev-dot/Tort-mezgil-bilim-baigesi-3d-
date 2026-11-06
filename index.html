@@ -23,17 +23,22 @@ button:focus-visible,input:focus-visible{outline:6px solid #fff;outline-offset:3
 .b3:disabled{opacity:.5;cursor:default}
 .hidden{display:none!important}
 /* intro */
-#ttl{position:absolute;left:0;right:0;top:150px;text-align:center;font-weight:900;color:#ffd23f;line-height:1.02;-webkit-text-stroke:10px #8a4300;paint-order:stroke fill;text-shadow:0 2px #d38b00,0 4px #d38b00,0 6px #c27300,0 8px #c27300,0 10px #b36600,0 12px #b36600,0 14px #a35a00,0 16px #a35a00,0 40px 50px #0006;animation:bobt 12s ease-in-out infinite}
+#ttl{position:absolute;left:0;right:0;top:65px;text-align:center;font-weight:900;color:#ffd23f;line-height:1.02;-webkit-text-stroke:10px #8a4300;paint-order:stroke fill;text-shadow:0 2px #d38b00,0 4px #d38b00,0 6px #c27300,0 8px #c27300,0 10px #b36600,0 12px #b36600,0 14px #a35a00,0 16px #a35a00,0 40px 50px #0006;animation:bobt 12s ease-in-out infinite}
 #ttl small{display:block;font-size:104px}#ttl span{display:block;font-size:150px}
 @keyframes bobt{50%{transform:translateY(-6px)}}
-#sub{position:absolute;top:520px;left:0;right:0;text-align:center;font-size:44px;color:#fff;text-shadow:0 4px 0 #1a6aa8,0 8px 14px #0005;font-weight:900}
-#startBtn{position:absolute;left:50%;top:640px;transform:translateX(-50%);height:150px;font-size:66px;padding:0 90px;animation:pulse 5s infinite}
+#sub{position:absolute;top:375px;left:0;right:0;text-align:center;font-size:44px;color:#fff;text-shadow:0 4px 0 #1a6aa8,0 8px 14px #0005;font-weight:900}
+#startBtn{position:absolute;left:50%;top:898px;transform:translateX(-50%);height:150px;font-size:66px;padding:0 90px;animation:pulse 5s infinite}
 @keyframes pulse{50%{box-shadow:inset 0 6px 0 #fff9,inset 0 -7px 0 #0002,0 12px 0 #c97d00,0 0 70px 24px #fff8}}
 .cn{position:absolute;width:300px;text-align:center}
 .cn .av{width:290px;height:320px}
 .cn input{width:260px;text-align:center;font-size:32px;font-weight:900;color:var(--c);border:5px solid var(--c);border-radius:22px;padding:8px;background:#fffd;box-shadow:0 6px 0 #0003}
 .av{animation:bob 9s ease-in-out infinite;filter:drop-shadow(0 12px 8px #0004)}
 @keyframes bob{50%{transform:translateY(-5px)}}
+/* setup panel */
+#setup{position:absolute;top:454px;left:490px;width:940px;min-height:420px;border:6px solid #fff;border-radius:38px;background:linear-gradient(160deg,#ffffffed,#e7f4ffed);box-shadow:0 15px 0 #1c659a99,0 28px 45px #0004;text-align:center;padding:18px 32px 22px}
+.setTitle{font-size:34px;font-weight:900;color:#1c5387;margin:0 0 10px}.namesTitle{margin-top:18px}
+#teamCountButtons{display:flex;justify-content:center;gap:20px}.countBtn{font-size:30px;font-weight:900;color:#255587;background:#fff;border:5px solid #78b8e7;border-radius:22px;min-width:188px;height:62px;cursor:pointer;box-shadow:0 5px 0 #397eae}.countBtn.active{background:#ffd24d;color:#754500;border-color:#f1a61a;box-shadow:0 5px 0 #be7b03}
+#teamNames{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.nameRow{display:flex;align-items:center;gap:10px;padding:9px 12px;border:4px solid var(--c);border-radius:20px;background:#fff;font-weight:900;font-size:23px;color:var(--c);min-width:0}.nameIcon{font-size:32px}.nameRow input{width:100%;min-width:0;border:0;outline:0;border-bottom:3px solid #dce8f5;font-size:25px;font-weight:800;color:#16365e;padding:6px;background:transparent}
 /* game */
 #top{position:absolute;left:40px;top:20px;width:1700px;height:100px;display:flex;gap:18px;align-items:center}
 .pill{background:#fffe;border:5px solid #fff;border-radius:30px;padding:8px 22px;font-size:28px;font-weight:900;box-shadow:0 6px 0 #0003}
@@ -47,13 +52,13 @@ button:focus-visible,input:focus-visible{outline:6px solid #fff;outline-offset:3
 #qt{font-size:54px;font-weight:900;line-height:1.15;padding:0 40px}
 #hint{font-size:26px;color:#42658b;font-weight:700;margin-top:6px}
 #pg{position:absolute;left:40px;right:40px;bottom:12px;height:10px;border-radius:9px;background:#dce9f6;overflow:hidden}#pb{height:100%;background:linear-gradient(90deg,#43c9a3,#48a9ff,#a78bfa);transition:width .5s}
-#teams{position:absolute;left:55px;top:365px;display:flex;gap:30px}
-.card{--c:#39b978;width:430px;border-radius:38px;padding:16px;background:linear-gradient(#fff,#eef7ff);border:7px solid var(--c);box-shadow:0 12px 0 color-mix(in srgb,var(--c),#000 28%),0 26px 34px #0005;position:relative}
+#teams{position:absolute;left:55px;right:55px;top:365px;display:flex;justify-content:center;gap:24px}
+.card{--c:#39b978;width:calc((100% - (var(--count) - 1) * 24px)/var(--count));min-width:0;border-radius:38px;padding:16px;background:linear-gradient(#fff,#eef7ff);border:7px solid var(--c);box-shadow:0 12px 0 color-mix(in srgb,var(--c),#000 28%),0 26px 34px #0005;position:relative}
 .ch0{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:relative}
-.ch0 .av{width:116px;height:128px;flex:none}
-.tn{font-size:38px;font-weight:900;color:var(--c)}.ts{font-size:26px;font-weight:800;color:#42658b}.ts b{color:var(--c)}
+.ch0 .av{width:clamp(80px,6vw,116px);height:128px;flex:none}
+.tn{font-size:clamp(27px,2vw,38px);overflow-wrap:anywhere;font-weight:900;color:var(--c)}.ts{font-size:26px;font-weight:800;color:#42658b}.ts b{color:var(--c)}
 .bd{position:absolute;right:0;top:4px;font-size:34px;font-weight:900;border-radius:20px;padding:4px 14px}.bd.g{background:#35b875;color:#fff;animation:pop .6s}.bd.r{background:#f16d77;color:#fff}
-.ch{display:flex;align-items:center;gap:12px;width:100%;height:68px;margin-top:10px;padding:0 14px;border-radius:22px;border:0;background:linear-gradient(#fff,#e1f0ff);color:#24466c;font-size:26px;font-weight:800;text-align:left;cursor:pointer;box-shadow:0 7px 0 #a9c9e6,inset 0 3px 0 #fff;transition:transform .15s,box-shadow .15s;line-height:1.05}
+.ch{display:flex;align-items:center;gap:12px;width:100%;min-height:68px;height:auto;padding-top:10px!important;padding-bottom:10px!important;margin-top:10px;padding:0 14px;border-radius:22px;border:0;background:linear-gradient(#fff,#e1f0ff);color:#24466c;font-size:clamp(22px,1.45vw,28px);font-weight:800;text-align:left;cursor:pointer;box-shadow:0 7px 0 #a9c9e6,inset 0 3px 0 #fff;transition:transform .15s,box-shadow .15s;line-height:1.05}
 .ch:hover:not(:disabled){transform:translateY(-3px)}
 .ch i{flex:none;width:42px;height:42px;border-radius:50%;background:var(--c);color:#fff;font-style:normal;display:grid;place-items:center;font-size:26px;box-shadow:inset 0 -4px 0 #0003}
 .ch.sel{background:linear-gradient(color-mix(in srgb,var(--c),#fff 22%),var(--c));color:#fff;transform:scale(1.07);box-shadow:0 0 0 5px #fff,0 0 26px 6px var(--c),0 7px 0 #0003;animation:sp .35s}
@@ -102,7 +107,8 @@ button:focus-visible,input:focus-visible{outline:6px solid #fff;outline-offset:3
 
 <section class="scr on" id="intro">
 <div id="ttl"><span>ТӨРТ МЕЗГІЛ</span><small>– БІЛІМ БӘЙГЕСІ</small></div>
-<div id="sub">Төрт топ • Төрт кезең • Бір жеңімпаз!</div>
+<div id="sub">Топтарды құрып, білім бәйгесін бастайық!</div>
+ <div id="setup"><div class="setTitle">👥 Топ санын таңдаңыз</div><div id="teamCountButtons"></div><div class="setTitle namesTitle">✏️ Топ атауларын жазыңыз</div><div id="teamNames"></div></div>
 <button class="b3" id="startBtn">🚀 ОЙЫНДЫ БАСТАУ</button>
 <div id="corners"></div>
 </section>
@@ -127,7 +133,8 @@ button:focus-visible,input:focus-visible{outline:6px solid #fff;outline-offset:3
 </div>
 <script>
 const $=id=>document.getElementById(id),st=$("stage");
-const T=[{n:"Көктем",e:"🌸",c:"#39b978",s:0},{n:"Жаз",e:"☀️",c:"#f3ad28",s:0},{n:"Күз",e:"🍂",c:"#ef8050",s:0},{n:"Қыс",e:"❄️",c:"#399de2",s:0}];
+const BASE=[{n:"Көктем",e:"🌸",c:"#39b978",s:0},{n:"Жаз",e:"☀️",c:"#f3ad28",s:0},{n:"Күз",e:"🍂",c:"#ef8050",s:0},{n:"Қыс",e:"❄️",c:"#399de2",s:0}];
+let teamCount=4,T=BASE.slice(0,teamCount);
 const DN=["Көктем","Жаз","Күз","Қыс"];
 const R=[
 {n:"«Жылдам жауап»",p:1,h:"Сұраққа дұрыс жауапты таңдаңдар.",q:[
@@ -150,7 +157,7 @@ const R=[
 {q:"Қар еріп, жылғалардан су ақты, гүлдер оянды. Бұл қай мезгіл?",a:DN,c:0},
 {q:"Күн күлімдеп қыздырды, жеміс-жидек пісірді. Бұл қай мезгіл?",a:DN,c:1},
 {q:"Сары кілем төселді, ағаштар жапырағын түсірді. Бұл қай мезгіл?",a:DN,c:2}]}];
-let ri=0,qi=0,locked=true,picks=[],winners=[];
+let ri=0,qi=0,locked=true,picks=[],winners=[],optionOrders=[];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 /* cartoon characters */
 function av(i){const c=T[i].c,h=["#7a4a2b","#2f2118","#9a4f22","#e0b04a"][i];
@@ -191,27 +198,36 @@ function show(id){["intro","game","final"].forEach(s=>$(s).classList.toggle("on"
 function theme(n){st.className="t"+n;seed(SETS[n]);deco(n)}
 /* intro */
 const pos=[["left:50px;top:60px"],["right:50px;top:60px"],["left:50px;top:610px"],["right:50px;top:610px"]];
-function intro(){theme(0);show("intro");$("corners").innerHTML=T.map((t,i)=>`<div class="cn" style="--c:${t.c};${pos[i]}">${av(i)}<input data-i="${i}" aria-label="Топ атауы" value="${esc(t.n)}"></div>`).join("");
-document.querySelectorAll(".cn input").forEach(x=>x.addEventListener("input",e=>{T[+e.target.dataset.i].n=e.target.value.trim()||DN[+e.target.dataset.i]}))}
+function intro(){theme(0);show("intro");$("corners").innerHTML="";setupTeams()}
+function setupTeams(){
+ T=BASE.slice(0,teamCount);
+ $("teamCountButtons").innerHTML=[2,3,4].map(n=>`<button type="button" class="countBtn ${n===teamCount?'active':''}" data-count="${n}" aria-pressed="${n===teamCount}">${n} топ</button>`).join("");
+ $("teamNames").innerHTML=T.map((t,i)=>`<label class="nameRow" style="--c:${t.c}"><span class="nameIcon">${t.e}</span><span>${i+1}-топ</span><input maxlength="24" data-i="${i}" aria-label="${i+1}-топтың атауы" value="${esc(t.n)}" placeholder="Топ атауы"></label>`).join("");
+}
+$("teamCountButtons").addEventListener("click",e=>{const b=e.target.closest("[data-count]");if(!b)return;teamCount=+b.dataset.count;setupTeams();snd.click()});
+$("teamNames").addEventListener("input",e=>{const input=e.target.closest("input[data-i]");if(input)BASE[+input.dataset.i].n=input.value});
 /* round flow */
 function round(){theme(ri+1);const r=R[ri];render();locked=true;
 $("bA").textContent=`${ri+1}-КЕЗЕҢ`;$("bB").textContent=r.n;$("bC").textContent=`⭐ Дұрыс жауапқа ${r.p} ұпай`;$("bn").classList.add("on");snd.stage();
 setTimeout(()=>{$("bn").classList.remove("on");locked=false},2400)}
-function render(){picks=[null,null,null,null];locked=false;const r=R[ri],q=r.q[qi];
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+function render(){picks=T.map(()=>null);locked=false;const r=R[ri],q=r.q[qi];
+ optionOrders=[];const used=new Set();for(let ti=0;ti<T.length;ti++){let order,tries=0;do{order=shuffle([0,1,2,3]);tries++}while(used.has(order.join(','))&&tries<100);used.add(order.join(','));optionOrders.push(order)}
+ $("teams").style.setProperty("--count",T.length);
 $("sn").textContent=`${ri+1}-кезең. ${r.n}`;$("qt").textContent=q.q;$("hint").textContent=`${r.h}  ⭐ ${r.p} ұпай`;$("pb").style.width=((ri*4+qi)/16*100)+"%";
 $("rp").textContent=`🏁 ${ri+1}-кезең`;$("qpill").textContent=`Сұрақ: ${qi+1} / 4`;$("fb").textContent="";
 $("checkBtn").classList.remove("hidden");$("nextBtn").classList.add("hidden");
-$("teams").innerHTML=T.map((t,ti)=>`<div class="card" style="--c:${t.c}"><div class="ch0">${av(ti)}<div><div class="tn">${esc(t.n)}</div><div class="ts"><b data-s="${ti}">${t.s}</b> ұпай</div></div><span class="bd"></span></div>${q.a.map((a,ai)=>`<button class="ch" data-t="${ti}" data-a="${ai}"><i>${"ABCD"[ai]}</i>${esc(a)}</button>`).join("")}</div>`).join("");
+$("teams").innerHTML=T.map((t,ti)=>`<div class="card" style="--c:${t.c}"><div class="ch0">${av(ti)}<div><div class="tn">${esc(t.n)}</div><div class="ts"><b data-s="${ti}">${t.s}</b> ұпай</div></div><span class="bd"></span></div>${optionOrders[ti].map((originalIndex,position)=>`<button class="ch" data-t="${ti}" data-a="${originalIndex}"><i>${"ABCD"[position]}</i>${esc(q.a[originalIndex])}</button>`).join("")}</div>`).join("");
 document.querySelectorAll("#sc [data-s]").forEach((e,i)=>e.textContent=T[i].s)}
 $("teams").addEventListener("click",e=>{const b=e.target.closest(".ch");if(!b||locked||b.disabled)return;const ti=+b.dataset.t;picks[ti]=+b.dataset.a;
 b.parentElement.querySelectorAll(".ch").forEach(z=>z.classList.remove("sel"));b.classList.add("sel");snd.sel()});
 function burst(card){const sr=st.getBoundingClientRect(),k=sr.width/1920,r=card.getBoundingClientRect(),x=(r.left+r.width/2-sr.left)/k,y=(r.top-sr.top)/k+70;
 for(let i=0;i<14;i++){const s=document.createElement("div");s.className="st";s.textContent=i%3?"⭐":"✨";s.style.cssText=`left:${x}px;top:${y}px;--dx:${(Math.random()-.5)*420}px;--dy:${-80-Math.random()*260}px`;st.appendChild(s);setTimeout(()=>s.remove(),1900)}}
 function check(){if(locked)return;
-if(picks.includes(null)){$("fb").textContent="⚠️ Барлық 4 топ жауапты таңдасын!";snd.bad();return}
+if(picks.includes(null)){$("fb").textContent=`⚠️ Барлық ${T.length} топ жауапты таңдасын!`;snd.bad();return}
 locked=true;const r=R[ri],q=r.q[qi],got=[];let bad=0;
 T.forEach((t,i)=>{const card=$("teams").children[i],bd=card.querySelector(".bd");
-card.querySelectorAll(".ch").forEach((b,j)=>{b.disabled=true;b.classList.remove("sel");if(j===q.c)b.classList.add("ok");else if(j===picks[i])b.classList.add("no")});
+card.querySelectorAll(".ch").forEach((b,j)=>{b.disabled=true;b.classList.remove("sel");if(+b.dataset.a===q.c)b.classList.add("ok");else if(+b.dataset.a===picks[i])b.classList.add("no")});
 if(picks[i]===q.c){const o=t.s;t.s+=r.p;setScore(i,o,t.s);got.push(t.n);bd.textContent="✔ +"+r.p;bd.className="bd g";card.classList.add("cheer");burst(card)}
 else{bad++;bd.textContent="✖";bd.className="bd r"}});
 $("fb").textContent=(got.length?`🎉 Дұрыс жауап: ${q.a[q.c]}. Ұпай алғандар: ${got.join(", ")}.`:`Дұрыс жауап: ${q.a[q.c]}.`)+(bad?" Ештеңе етпейді, келесі сұрақта міндетті түрде табасыңдар! 💪":"");
@@ -227,7 +243,7 @@ $("wvL").innerHTML=w.slice(0,h).map(av).join("");$("wvR").innerHTML=w.slice(h).m
 $("wvR").querySelectorAll(".av").forEach(a=>a.style.transform="scaleX(-1)");
 $("fs").innerHTML=T.map(t=>`<div class="chip" style="--c:${t.c};justify-content:center;font-size:30px"><span>${t.e}</span><span>${esc(t.n)}</span><b>${t.s}</b></div>`).join("");
 $("rp").textContent="🏆 Қорытынды";snd.fan();confetti();setTimeout(confetti,2500);setTimeout(confetti,5000)}
-function start(){snd.click();T.forEach(t=>t.s=0);ri=0;qi=0;chips();show("game");round()}
+function start(){snd.click();T.forEach((t,i)=>{t.n=t.n.trim()||DN[i];t.s=0});ri=0;qi=0;chips();show("game");round()}
 $("startBtn").addEventListener("click",start);$("checkBtn").addEventListener("click",check);$("nextBtn").addEventListener("click",next);
 $("restartBtn").addEventListener("click",()=>{snd.click();T.forEach(t=>t.s=0);intro()});
 $("prBtn").addEventListener("click",()=>window.print());
